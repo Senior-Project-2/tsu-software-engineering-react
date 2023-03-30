@@ -111,7 +111,7 @@ export default function Main() {
   
   return (
     <>
-      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Client Homepage</h2>
+      <h2 className="is-size-2 pb-6 has-text-weight-medium"> ABC Company Admin Homepage</h2>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0"> 
             <table className="table is-striped is-fullwidth">
@@ -119,10 +119,10 @@ export default function Main() {
                   <tr>
                     <th>#</th>
                     <th>Client Name</th>
-                    <th>State</th>
-                    <th>Number of Inventories</th>
-                    <th>Number of Contacts</th>
-                    <th></th>
+                    <th>Inventory Name</th>
+                    <th>Inventory Location</th>
+                    <th>Inventories with low resources (at or below 10%) </th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>

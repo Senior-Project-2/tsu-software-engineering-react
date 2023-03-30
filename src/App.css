@@ -1,16 +1,21 @@
 .test-app-header a, .test-app-header .navbar-burger, .footer .navbar-item, .footer ul{
-  color: DodgerBlue;
+  color: white;
+
 }
 
 .test-app-header a:hover, .test-app-header .navbar-burger:hover, .footer .navbar-item:hover{
   color: white;
+
   background-color: DodgerBlue;
   background-color: rgb(204, 241, 255);
 }
 
-.navbar-menu{
-  background-color: hsl(0, 0%, 21%);
+.test-app-hheader navbar-item{
+ display: flex;
+    justify-content: center;
+    align-item: center;
 }
+
 .Login {
     display: flex;
     justify-content: center;
