@@ -4,8 +4,9 @@ import {ClientTableRow, ClientTableJsonObject, getClientTable} from "../DataObje
 import { INIT_RESULT_DATA } from "../DataConstants/ClientTableConstants";
 import dummyData from "../DataConstants/clientDb.json";
 const data: any = dummyData;
-export default function Main() {
-    
+//export default
+function Home() {
+
   const [tableData, setTableData] = useState<ClientTableRow[]>([INIT_RESULT_DATA]);
   const [modalClientData, setmodalClientData] = useState<ClientTableRow>(INIT_RESULT_DATA);
   const [isModalActive, setIsModalActive] = useState<Boolean>(false);
@@ -17,7 +18,7 @@ export default function Main() {
       getClientTable().then(
         function (response: any){
           let clientTableArray: ClientTableRow[] = [];
-          
+
           //Define the output of my objects to the array.
           response.data.forEach((element: ClientTableJsonObject) => {
             clientTableArray.push({
@@ -38,8 +39,8 @@ export default function Main() {
         }
       );
     } catch{}
-  } 
-  
+  }
+
   function toggleModal() {
     setIsModalActive(!isModalActive);
   }
@@ -55,7 +56,7 @@ export default function Main() {
     if(!modalState) {
       return null;
     }
-    
+
     return(
       <div className="modal is-active">
         <div className="modal-background"></div>
@@ -106,12 +107,12 @@ export default function Main() {
   useEffect(() => {
     setClientTable();
   }, []);
-  
+
   return (
     <>
       <h2 className="is-size-2 pb-6 has-text-weight-medium"> Client Homepage</h2>
       <div className="box columns is-centered is-radiusless">
-        <div className="column is-12 px-0 py-0"> 
+        <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
                 <thead>
                   <tr>
@@ -146,3 +147,5 @@ export default function Main() {
     </>
   );
 }
+export default Home;
+

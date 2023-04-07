@@ -43,5 +43,93 @@
         "num_of_inventories": 26,
         "num_of_contacts": 4
     }
+  ],
+  "inventory": [
+    {
+      "id": 1,
+      "inventory_name": "Drills r US",
+      "inventory_address": "TN",
+      "inventory_current_num": 2,
+      "inventory_max_num": 4
+    },
+    {
+      "id": 2,
+      "inventory_name": "Kruger",
+      "inventory_address": "KY",
+      "inventory_current_num": 9001,
+      "inventory_max_num": 45
+    },
+    {
+      "id": 7,
+      "inventory_name": "Lowels",
+      "inventory_address": "CA",
+      "inventory_current_num": 60,
+      "inventory_max_num": 1
+    },
+    {
+      "id": 9,
+      "inventory_name": "Pooblix",
+      "inventory_address": "AL",
+      "inventory_current_num": 314159,
+      "inventory_max_num": 205
+    },
+    {
+      "id": 4,
+      "inventory_name": "Amazoom",
+      "inventory_address": "CO",
+      "inventory_current_num": 100,
+      "inventory_max_num": 25
+    },
+    {
+      "id": 6,
+      "inventory_name": "EB Gamers",
+      "inventory_address": "UT",
+      "inventory_current_num": 26,
+      "inventory_max_num": 4
+    }
+  ],
+  "resources": [
+    {
+      "id": 2,
+      "resources_pic": " Photo",
+      "resources_name": "Ronald ",
+      "resources_current_num": 3,
+      "resource_random": 4
+    },
+    {
+      "id": 2,
+      "resources_pic": " Photo",
+      "resources_name": "Ronald ",
+      "resources_current_num": 3,
+      "resource_random": 4
+    },
+    {
+      "id": 2,
+      "resources_pic": " Photo",
+      "resources_name": "Ronald ",
+      "resources_current_num": 3,
+      "resource_random": 4
+    },
+    {
+      "id": 2,
+      "resources_pic": " Photo",
+      "resources_name": "Ronald ",
+      "resources_current_num": 3,
+      "resource_random": 4
+    },
+    {
+      "id": 2,
+      "resources_pic": " Photo",
+      "resources_name": "Ronald ",
+      "resources_current_num": 3,
+      "resource_random": 4
+    },
+    {
+      "id": 2,
+      "resources_pic": " Photo",
+      "resources_name": "Ronald ",
+      "resources_current_num": 3,
+      "resource_random": 4
+    }
   ]
 }

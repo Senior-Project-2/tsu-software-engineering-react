@@ -3,10 +3,10 @@
  import Home from "./Views/Home";
  import Login from "./Pages/Login";
  import CreateAccount from "./Pages/CreateAccount"
- //import InventoryList from "./Pages/InventoryList"
+ import InventoryList from "./Pages/InventoryList"
 //
- import Blogs from "./Views/Blogs";
-import {BasicTable} from "./Pages/BasicTable";
+ //import Blogs from "./Views/Blogs";
+//import {BasicTable} from "./Pages/BasicTable";
 //
 import React from "react";
 import {
@@ -23,12 +23,16 @@ function App() {
                      <Route index element={<Login />}></Route>
                      <Route path="createAccount" element={<CreateAccount />}></Route>
                      <Route path="about" element={<About/>}></Route>
+                     <Route path="inventorylist" element={<InventoryList/>}></Route>
                  </Route>
              </Routes>
           </Router>
          );
     }
 export default App;
+
+
+
 
 
 
