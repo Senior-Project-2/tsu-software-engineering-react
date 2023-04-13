@@ -3,7 +3,7 @@
  import Home from "./Views/Home";
  import Login from "./Pages/Login";
  import CreateAccount from "./Pages/CreateAccount"
- import InventoryList from "./Pages/InventoryList"
+ import InventoryList from "./Pages/ClientHomepage"
  import ResourceList from "./Pages/ResourceList"
 
 import React from "react";

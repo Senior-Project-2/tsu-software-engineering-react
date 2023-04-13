@@ -109,7 +109,12 @@ export default function Main() {
 
   return (
     <>
-      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Resourcce List</h2>
+      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Resource List</h2>
+      <div className="container is-fluid mt-5">
+              <progress className="progress is-link"
+                        value="60" max="100">60%</progress>
+
+          </div>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">

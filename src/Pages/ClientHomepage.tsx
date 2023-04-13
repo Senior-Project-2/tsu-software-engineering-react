@@ -109,7 +109,15 @@ export default function Main() {
 
   return (
     <>
-      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Inventory List</h2>
+      <h2 className="is-size-3 pb-5 has-text-weight-medium"> Inventory List</h2>
+       <div className="box1 is-danger is-pulled-left">
+                  <div className= "box1 is-6">
+                      <p className ="bd-notification is primary">First column</p>
+              </div>
+              <div className="box1">
+                  <p className="bd-notifcation is primary">Second columns with more content. This is for you.</p>
+                  </div>
+                </div>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
