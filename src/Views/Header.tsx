@@ -1,6 +1,7 @@
 import "../App.css";
 //import { faBell } from "@fortawesome/free-solid-svg-icons";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {useNavigate} from "react-router-dom";
 
 function onClickHandler(){
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
@@ -18,6 +19,8 @@ function onClickHandler(){
 }
 
 function Header() {
+//const navigate = useNavigate();
+//const goToInventoryList = () => navigate("/inventorylist");
     return (
         <nav className="navbar has-background-dark test-app-header" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
@@ -39,6 +42,7 @@ function Header() {
                 <div className="navbar-start">
                     <a className="navbar-item" href="/">Home</a>
                     <a className="navbar-item" href="/about">Inventory List</a>
+                    {/*}<button onClick={goToInventoryList} className="submitbutton">InventoryList</button>*/}
                     <a className="navbar-item" href="/about">Resources List</a>
                     <a className="navbar-item" href="/about">Profile</a>
                 </div>

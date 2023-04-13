@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export interface ClientTableRow {
-    id: Number,
+        id: Number,
         ClientName: String,
         AddressState: String,
         InventoryCount: Number,
