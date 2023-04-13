@@ -5,7 +5,9 @@
  import CreateAccount from "./Pages/CreateAccount"
  import InventoryList from "./Pages/InventoryList"
 //
+
  //import Blogs from "./Views/Blogs";
+
 //import {BasicTable} from "./Pages/BasicTable";
 //
 import React from "react";

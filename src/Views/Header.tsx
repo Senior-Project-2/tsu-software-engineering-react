@@ -26,7 +26,7 @@ function Header() {
             <div className="navbar-brand">
                 <a href="/" className="navbar-item">
                 <img
-                    src={require("../anime.png")}
+                    src={require("./hashtag.png")}
                     alt="Logo"
                     width="auto"
                     height="auto"
