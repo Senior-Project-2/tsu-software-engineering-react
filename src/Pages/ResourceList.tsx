@@ -1,30 +1,26 @@
-import "../App.css";
 
 import { useEffect, useState } from "react";
-//import "../App.css";
-import {ClientTableResourcesRow, ClientTableJsonObject, getClientTable} from "../DataObjects/ClientTableResourcesInterface";
-import { INIT_RESULT_DATA } from "../DataConstants/ClientTableResourcesConstants";
-import dummyData from "../DataConstants/clientDb.json";
-const data: any = dummyData;
-//export default
-function ResourcesList() {
+import "../App.css";
+import {ResourceTableRow, ResourceTableJsonObject, getResourceTable} from "../DataObjects/ResourceTableInterface";
+import { INIT_RESULT_RESOURCE_DATA } from "../DataConstants/ResourceTableConstants";
 
+export default function Main() {
 
-  const [tableData, setTableData] = useState<ClientTableResourcesRow[]>([INIT_RESULT_DATA]);
-  const [modalClientData, setmodalClientData] = useState<ClientTableResourcesRow>(INIT_RESULT_DATA);
+  const [tableData, setTableData] = useState<ResourceTableRow[]>([INIT_RESULT_RESOURCE_DATA]);
+  const [modalResourceData, setmodalResourceData] = useState<ResourceTableRow>(INIT_RESULT_RESOURCE_DATA);
   const [isModalActive, setIsModalActive] = useState<Boolean>(false);
 
 
-  //A function that supports the creation of the client table.
-  function setClientTable(){
+  //A function that supports the creation of the resource table.
+  function setResourceTable(){
     try{
-      getClientTable().then(
+      getResourceTable().then(
         function (response: any){
-          let clientTableArray: ClientTableResourcesRow[] = [];
+          let resourceTableArray: ResourceTableRow[] = [];
 
           //Define the output of my objects to the array.
-          response.data.forEach((element: ClientTableJsonObject) => {
-            clientTableArray.push({
+          response.data.forEach((element: ResourceTableJsonObject) => {
+            resourceTableArray.push({
               id: (element.id ? element.id : null),
               Resources: (element.resources_pic ? element.resources_pic : ""),
               ResourcesName: (element.resources_name ? element.resources_name : ""),
@@ -35,7 +31,7 @@ function ResourcesList() {
 
 
           //Overwrite the table data.
-          setTableData(clientTableArray);
+          setTableData(resourceTableArray);
         },
         (error) => {
           console.log(error)
@@ -49,8 +45,8 @@ function ResourcesList() {
   }
 
   function showModal(key: number){
-    let clientRow: ClientTableResourcesRow = tableData.at(key);
-    setmodalClientData(clientRow);
+    let resourceRow: ResourceTableRow = tableData.at(key);
+    setmodalResourceData(resourceRow);
     toggleModal();
   }
 
@@ -65,37 +61,37 @@ function ResourcesList() {
         <div className="modal-background"></div>
         <div className="modal-card">
           <div className="modal-card-head is-radiusless">
-            <p className="modal-card-title">Client Information</p>
+            <p className="modal-card-title">Resource Information</p>
             <button className="delete is-pulled-right" aria-label="close" onClick={closeModal}></button>
           </div>
           <section className="modal-card-body columns">
             <div className="column">
               <label className="has-text-weight-medium">Number: </label>
-              <p className="mb-3">{(modalClientData.id ? modalClientData.id.toString() : "")}</p>
-              { modalClientData.Resources &&
+              <p className="mb-3">{(modalResourceData.id ? modalResourceData.id.toString() : "")}</p>
+              { modalResourceData.Resources &&
                 <>
-                  <label className="has-text-weight-medium">Client Name: </label>
-                  <p>{(modalClientData.Resources ? modalClientData.Resources: "")}</p>
+                  <label className="has-text-weight-medium">Resource Name: </label>
+                  <p>{(modalResourceData.Resources ? modalResourceData.Resources: "")}</p>
                 </>
               }
             </div>
             <div className="column">
-              { modalClientData.ResourcesName &&
+              { modalResourceData.ResourcesName &&
                 <>
                   <label className="has-text-weight-medium">State: </label>
-                  <p className="mb-3">{(modalClientData.ResourcesName ? modalClientData.ResourcesName : "")}</p>
+                  <p className="mb-3">{(modalResourceData.ResourcesName ? modalResourceData.ResourcesName : "")}</p>
                 </>
               }
-              { modalClientData.ResourcesCurrentNum &&
+              { modalResourceData.ResourcesCurrentNum &&
                 <>
-                  <label className="has-text-weight-medium">Number of Inventories: </label>
-                  <p className="mb-3">{(modalClientData.ResourcesCurrentNum ? modalClientData.ResourcesCurrentNum.toString() : "")}</p>
+                  <label className="has-text-weight-medium">Number of Resources: </label>
+                  <p className="mb-3">{(modalResourceData.ResourcesCurrentNum ? modalResourceData.ResourcesCurrentNum.toString() : "")}</p>
                 </>
               }
-              { modalClientData.ResourceRandom &&
+              { modalResourceData.ResourceRandom &&
                 <>
                   <label className="has-text-weight-medium">Number of Contacts: </label>
-                  <p>{(modalClientData.ResourceRandom ? modalClientData.ResourceRandom.toString() : "")}</p>
+                  <p>{(modalResourceData.ResourceRandom ? modalResourceData.ResourceRandom.toString() : "")}</p>
                 </>
               }
             </div>
@@ -108,27 +104,27 @@ function ResourcesList() {
 
   //The useEffect is a function that runs whenever the set data changes or when loading the page.
   useEffect(() => {
-    setClientTable();
+    setResourceTable();
   }, []);
 
   return (
     <>
-      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Client Homepage</h2>
+      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Resourcce List</h2>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Inventory Name</th>
-                    <th>Inventory Address</th>
-                    <th>Current Number of Inventories</th>
+                    <th>Resource Name</th>
+                    <th>Resource Address</th>
+                    <th>Current Number of Resource</th>
                     <th>Max Number of Inventories</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {data.inventorylist.map((row:any, i:number) =>
+                  {tableData.map((row:any, i:number) =>
                     <tr id={(row.id ? row.id.toString() : "")}>
                       <td>{(row.id ? row.id.toString() : "")}</td>
                       <td>{(row.resources_pic ? row.resources_pic : "")}</td>
@@ -150,4 +146,3 @@ function ResourcesList() {
     </>
   );
 }
-export default ResourcesList;

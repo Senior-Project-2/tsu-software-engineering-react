@@ -1,30 +1,26 @@
-import "../App.css";
 
 import { useEffect, useState } from "react";
-//import "../App.css";
-import {ClientTableInventoryRow, ClientTableJsonObject, getClientTable} from "../DataObjects/ClientTableInventoryInterface";
-import { INIT_RESULT_DATA } from "../DataConstants/ClientTableInventoryConstants";
-import dummyData from "../DataConstants/clientDb.json";
-const data: any = dummyData;
-//export default
-function InventoryList() {
+import "../App.css";
+import {InventoryTableRow, InventoryTableJsonObject, getInventoryTable} from "../DataObjects/InventoryTableInterface";
+import { INIT_INVENTORY_RESULT_DATA } from "../DataConstants/InventoryTableConstants";
 
+export default function Main() {
 
-  const [tableData, setTableData] = useState<ClientTableInventoryRow[]>([INIT_RESULT_DATA]);
-  const [modalClientData, setmodalClientData] = useState<ClientTableInventoryRow>(INIT_RESULT_DATA);
+  const [tableData, setTableData] = useState<InventoryTableRow[]>([INIT_INVENTORY_RESULT_DATA]);
+  const [modalInventoryData, setmodalInventoryData] = useState<InventoryTableRow>(INIT_INVENTORY_RESULT_DATA);
   const [isModalActive, setIsModalActive] = useState<Boolean>(false);
 
 
-  //A function that supports the creation of the client table.
-  function setClientTable(){
+  //A function that supports the creation of the inventory table.
+  function setInventoryTable(){
     try{
-      getClientTable().then(
+      getInventoryTable().then(
         function (response: any){
-          let clientTableArray: ClientTableInventoryRow[] = [];
+          let inventoryTableArray: InventoryTableRow[] = [];
 
           //Define the output of my objects to the array.
-          response.data.forEach((element: ClientTableJsonObject) => {
-            clientTableArray.push({
+          response.data.forEach((element: InventoryTableJsonObject) => {
+            inventoryTableArray.push({
               id: (element.id ? element.id : null),
               InventoryName: (element.inventory_name ? element.inventory_name : ""),
               InventoryAddress: (element.inventory_address ? element.inventory_address : ""),
@@ -35,7 +31,7 @@ function InventoryList() {
 
 
           //Overwrite the table data.
-          setTableData(clientTableArray);
+          setTableData(inventoryTableArray);
         },
         (error) => {
           console.log(error)
@@ -49,8 +45,8 @@ function InventoryList() {
   }
 
   function showModal(key: number){
-    let clientRow: ClientTableInventoryRow = tableData.at(key);
-    setmodalClientData(clientRow);
+    let inventoryRow: InventoryTableRow = tableData.at(key);
+    setmodalInventoryData(inventoryRow);
     toggleModal();
   }
 
@@ -65,37 +61,37 @@ function InventoryList() {
         <div className="modal-background"></div>
         <div className="modal-card">
           <div className="modal-card-head is-radiusless">
-            <p className="modal-card-title">Client Information</p>
+            <p className="modal-card-title">Inventory Information</p>
             <button className="delete is-pulled-right" aria-label="close" onClick={closeModal}></button>
           </div>
           <section className="modal-card-body columns">
             <div className="column">
               <label className="has-text-weight-medium">Number: </label>
-              <p className="mb-3">{(modalClientData.id ? modalClientData.id.toString() : "")}</p>
-              { modalClientData.InventoryName &&
+              <p className="mb-3">{(modalInventoryData.id ? modalInventoryData.id.toString() : "")}</p>
+              { modalInventoryData.InventoryName &&
                 <>
-                  <label className="has-text-weight-medium">Client Name: </label>
-                  <p>{(modalClientData.InventoryName ? modalClientData.InventoryName : "")}</p>
+                  <label className="has-text-weight-medium">Inventory Name: </label>
+                  <p>{(modalInventoryData.InventoryName ? modalInventoryData.InventoryName : "")}</p>
                 </>
               }
             </div>
             <div className="column">
-              { modalClientData.InventoryAddress &&
+              { modalInventoryData.InventoryAddress &&
                 <>
                   <label className="has-text-weight-medium">State: </label>
-                  <p className="mb-3">{(modalClientData.InventoryAddress ? modalClientData.InventoryAddress : "")}</p>
+                  <p className="mb-3">{(modalInventoryData.InventoryAddress ? modalInventoryData.InventoryAddress : "")}</p>
                 </>
               }
-              { modalClientData.InventoryCount &&
+              { modalInventoryData.InventoryCount &&
                 <>
                   <label className="has-text-weight-medium">Number of Inventories: </label>
-                  <p className="mb-3">{(modalClientData.InventoryCount ? modalClientData.InventoryCount.toString() : "")}</p>
+                  <p className="mb-3">{(modalInventoryData.InventoryCount ? modalInventoryData.InventoryCount.toString() : "")}</p>
                 </>
               }
-              { modalClientData.InventoryMaxCount &&
+              { modalInventoryData.InventoryMaxCount &&
                 <>
                   <label className="has-text-weight-medium">Number of Contacts: </label>
-                  <p>{(modalClientData.InventoryMaxCount ? modalClientData.InventoryMaxCount.toString() : "")}</p>
+                  <p>{(modalInventoryData.InventoryMaxCount ? modalInventoryData.InventoryMaxCount.toString() : "")}</p>
                 </>
               }
             </div>
@@ -108,12 +104,12 @@ function InventoryList() {
 
   //The useEffect is a function that runs whenever the set data changes or when loading the page.
   useEffect(() => {
-    setClientTable();
+    setInventoryTable();
   }, []);
 
   return (
     <>
-      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Client Homepage</h2>
+      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Inventory List</h2>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
@@ -128,7 +124,7 @@ function InventoryList() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.inventorylist.map((row:any, i:number) =>
+                  {tableData.map((row:any, i:number) =>
                     <tr id={(row.id ? row.id.toString() : "")}>
                       <td>{(row.id ? row.id.toString() : "")}</td>
                       <td>{(row.inventory_name ? row.inventory_name : "")}</td>
@@ -150,4 +146,3 @@ function InventoryList() {
     </>
   );
 }
-export default InventoryList;

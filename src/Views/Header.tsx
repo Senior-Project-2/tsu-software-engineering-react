@@ -41,7 +41,7 @@ function Header() {
             <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start">
                     <a className="navbar-item" href="/">Home</a>
-                    <a className="navbar-item" href="/about">Inventory List</a>
+                    <a className="navbar-item" href="/inventorylist">Inventory List</a>
                     {/*}<button onClick={goToInventoryList} className="submitbutton">InventoryList</button>*/}
                     <a className="navbar-item" href="/about">Resources List</a>
                     <a className="navbar-item" href="/about">Profile</a>

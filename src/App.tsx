@@ -4,12 +4,8 @@
  import Login from "./Pages/Login";
  import CreateAccount from "./Pages/CreateAccount"
  import InventoryList from "./Pages/InventoryList"
-//
+ import ResourceList from "./Pages/ResourceList"
 
- //import Blogs from "./Views/Blogs";
-
-//import {BasicTable} from "./Pages/BasicTable";
-//
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -26,6 +22,7 @@ function App() {
                      <Route path="createAccount" element={<CreateAccount />}></Route>
                      <Route path="about" element={<About/>}></Route>
                      <Route path="inventorylist" element={<InventoryList/>}></Route>
+                     <Route path="resourcelist" element={<ResourceList/>}></Route>
                  </Route>
              </Routes>
           </Router>
