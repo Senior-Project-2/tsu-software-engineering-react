@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export interface ClientTableInventoryRow {
+export interface InventoryTableRow {
         id: Number,
         InventoryName: String,
         InventoryAddress: String,
@@ -9,7 +9,7 @@ export interface ClientTableInventoryRow {
     }
 
 
-    export interface ClientTableJsonObject {
+    export interface InventoryTableJsonObject {
         id: Number,
         inventory_name: String,
         inventory_address: String,
@@ -18,7 +18,7 @@ export interface ClientTableInventoryRow {
     }
 
 
-    export async function getClientTable() {
+    export async function getInventoryTable() {
         const response = await axios.get(
           'http://localhost:8040/inventory',
           {}

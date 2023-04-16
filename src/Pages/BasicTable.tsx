@@ -1,4 +1,4 @@
-import React, { useMemo} from "react";
+/*import React, { useMemo} from "react";
 import {useTable} from "react-table";
 import dummyData from "./DataConstants/clientDb.json";
 import {COLUMNS} from "../Pages/Columns"
@@ -47,3 +47,5 @@ export const BasicTable = () => {
         </table>
     )
 }
+
+*/

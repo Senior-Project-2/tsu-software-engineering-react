@@ -26,7 +26,7 @@ function Header() {
             <div className="navbar-brand">
                 <a href="/" className="navbar-item">
                 <img
-                    src={require("../anime.png")}
+                    src={require("./hashtag.png")}
                     alt="Logo"
                     width="auto"
                     height="auto"
@@ -39,9 +39,9 @@ function Header() {
                 </button>
             </div>
             <div id="navbarBasicExample" className="navbar-menu">
-                <div className="navbar-start">
+                <div className="navbar-start panel-tabs">
                     <a className="navbar-item" href="/">Home</a>
-                    <a className="navbar-item" href="/about">Inventory List</a>
+                    <a className="navbar-item" href="/inventorylist">Inventory List</a>
                     {/*}<button onClick={goToInventoryList} className="submitbutton">InventoryList</button>*/}
                     <a className="navbar-item" href="/about">Resources List</a>
                     <a className="navbar-item" href="/about">Profile</a>

@@ -1,0 +1,15 @@
+.columns{
+    width: 100px;
+    height: 40px;
+    margin: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px;
+    border-color: rgb(204, 241, 255);
+    cursor: pointer;
+    position:relative;
+    right: 225px;
+    top:175px;
+    background-color: rgb(87, 154, 190);
+}

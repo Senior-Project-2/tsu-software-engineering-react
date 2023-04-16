@@ -1,4 +1,4 @@
-export const COLUMNS = [
+/*export const COLUMNS = [
     {
     Header: 'id',
     accessor: 'id'
@@ -18,4 +18,5 @@ export const COLUMNS = [
     {
         Header: 'Number of Contacts',
         accessor: 'num_of_contacts'
-        },]
+   },]
+   */

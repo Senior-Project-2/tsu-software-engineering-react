@@ -1,41 +1,37 @@
-import "../App.css";
 
 import { useEffect, useState } from "react";
-//import "../App.css";
-import {ClientTableResourcesRow, ClientTableJsonObject, getClientTable} from "../DataObjects/ClientTableResourcesInterface";
-import { INIT_RESULT_DATA } from "../DataConstants/ClientTableResourcesConstants";
-import dummyData from "../DataConstants/clientDb.json";
-const data: any = dummyData;
-//export default
-function ResourcesList() {
+import "../App.css";
+import {InventoryTableRow, InventoryTableJsonObject, getInventoryTable} from "../DataObjects/InventoryTableInterface";
+import { INIT_INVENTORY_RESULT_DATA } from "../DataConstants/InventoryTableConstants";
 
+export default function Main() {
 
-  const [tableData, setTableData] = useState<ClientTableResourcesRow[]>([INIT_RESULT_DATA]);
-  const [modalClientData, setmodalClientData] = useState<ClientTableResourcesRow>(INIT_RESULT_DATA);
+  const [tableData, setTableData] = useState<InventoryTableRow[]>([INIT_INVENTORY_RESULT_DATA]);
+  const [modalInventoryData, setmodalInventoryData] = useState<InventoryTableRow>(INIT_INVENTORY_RESULT_DATA);
   const [isModalActive, setIsModalActive] = useState<Boolean>(false);
 
 
-  //A function that supports the creation of the client table.
-  function setClientTable(){
+  //A function that supports the creation of the inventory table.
+  function setInventoryTable(){
     try{
-      getClientTable().then(
+      getInventoryTable().then(
         function (response: any){
-          let clientTableArray: ClientTableResourcesRow[] = [];
+          let inventoryTableArray: InventoryTableRow[] = [];
 
           //Define the output of my objects to the array.
-          response.data.forEach((element: ClientTableJsonObject) => {
-            clientTableArray.push({
+          response.data.forEach((element: InventoryTableJsonObject) => {
+            inventoryTableArray.push({
               id: (element.id ? element.id : null),
-              Resources: (element.resources_pic ? element.resources_pic : ""),
-              ResourcesName: (element.resources_name ? element.resources_name : ""),
-              ResourcesCurrentNum: (element.resources_current_num ? element.resources_current_num : null),
-              ResourceRandom: (element.resource_random ? element.resource_random : null)
+              InventoryName: (element.inventory_name ? element.inventory_name : ""),
+              InventoryAddress: (element.inventory_address ? element.inventory_address : ""),
+              InventoryCount: (element.inventory_current_num ? element.inventory_current_num : null),
+              InventoryMaxCount: (element.inventory_max_num ? element.inventory_max_num : null)
             });
           });
 
 
           //Overwrite the table data.
-          setTableData(clientTableArray);
+          setTableData(inventoryTableArray);
         },
         (error) => {
           console.log(error)
@@ -49,8 +45,8 @@ function ResourcesList() {
   }
 
   function showModal(key: number){
-    let clientRow: ClientTableResourcesRow = tableData.at(key);
-    setmodalClientData(clientRow);
+    let inventoryRow: InventoryTableRow = tableData.at(key);
+    setmodalInventoryData(inventoryRow);
     toggleModal();
   }
 
@@ -65,37 +61,37 @@ function ResourcesList() {
         <div className="modal-background"></div>
         <div className="modal-card">
           <div className="modal-card-head is-radiusless">
-            <p className="modal-card-title">Client Information</p>
+            <p className="modal-card-title">Inventory Information</p>
             <button className="delete is-pulled-right" aria-label="close" onClick={closeModal}></button>
           </div>
           <section className="modal-card-body columns">
             <div className="column">
               <label className="has-text-weight-medium">Number: </label>
-              <p className="mb-3">{(modalClientData.id ? modalClientData.id.toString() : "")}</p>
-              { modalClientData.Resources &&
+              <p className="mb-3">{(modalInventoryData.id ? modalInventoryData.id.toString() : "")}</p>
+              { modalInventoryData.InventoryName &&
                 <>
-                  <label className="has-text-weight-medium">Client Name: </label>
-                  <p>{(modalClientData.Resources ? modalClientData.Resources: "")}</p>
+                  <label className="has-text-weight-medium">Inventory Name: </label>
+                  <p>{(modalInventoryData.InventoryName ? modalInventoryData.InventoryName : "")}</p>
                 </>
               }
             </div>
             <div className="column">
-              { modalClientData.ResourcesName &&
+              { modalInventoryData.InventoryAddress &&
                 <>
                   <label className="has-text-weight-medium">State: </label>
-                  <p className="mb-3">{(modalClientData.ResourcesName ? modalClientData.ResourcesName : "")}</p>
+                  <p className="mb-3">{(modalInventoryData.InventoryAddress ? modalInventoryData.InventoryAddress : "")}</p>
                 </>
               }
-              { modalClientData.ResourcesCurrentNum &&
+              { modalInventoryData.InventoryCount &&
                 <>
                   <label className="has-text-weight-medium">Number of Inventories: </label>
-                  <p className="mb-3">{(modalClientData.ResourcesCurrentNum ? modalClientData.ResourcesCurrentNum.toString() : "")}</p>
+                  <p className="mb-3">{(modalInventoryData.InventoryCount ? modalInventoryData.InventoryCount.toString() : "")}</p>
                 </>
               }
-              { modalClientData.ResourceRandom &&
+              { modalInventoryData.InventoryMaxCount &&
                 <>
                   <label className="has-text-weight-medium">Number of Contacts: </label>
-                  <p>{(modalClientData.ResourceRandom ? modalClientData.ResourceRandom.toString() : "")}</p>
+                  <p>{(modalInventoryData.InventoryMaxCount ? modalInventoryData.InventoryMaxCount.toString() : "")}</p>
                 </>
               }
             </div>
@@ -108,12 +104,20 @@ function ResourcesList() {
 
   //The useEffect is a function that runs whenever the set data changes or when loading the page.
   useEffect(() => {
-    setClientTable();
+    setInventoryTable();
   }, []);
 
   return (
     <>
-      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Client Homepage</h2>
+      <h2 className="is-size-3 pb-5 has-text-weight-medium"> Inventory List</h2>
+       <div className="box1 is-danger is-pulled-left">
+                  <div className= "box1 is-6">
+                      <p className ="bd-notification is primary">First column</p>
+              </div>
+              <div className="box1">
+                  <p className="bd-notifcation is primary">Second columns with more content. This is for you.</p>
+                  </div>
+                </div>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
@@ -128,12 +132,12 @@ function ResourcesList() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.inventorylist.map((row:any, i:number) =>
+                  {tableData.map((row:any, i:number) =>
                     <tr id={(row.id ? row.id.toString() : "")}>
                       <td>{(row.id ? row.id.toString() : "")}</td>
-                      <td>{(row.resources_pic ? row.resources_pic : "")}</td>
-                      <td>{(row.resources_name ? row.resources_name : "")}</td>
-                      <td>{(row.resources_current_num ? row.resources_current_num.toString() : "")}</td>
+                      <td>{(row.inventory_name ? row.inventory_name : "")}</td>
+                      <td>{(row.inventory_address ? row.inventory_address : "")}</td>
+                      <td>{(row.inventory_current_num ? row.inventory_current_num.toString() : "")}</td>
                       <td>{(row.inventory_max_num ? row.inventory_max_num.toString() : "")}</td>
                       <td><button className="button is-dark" onClick={() => showModal(i)}>View Client Details</button></td>
                       <td><button className="button is-dark" onClick={() => showModal(i)}>Edit Client Details</button></td>
@@ -150,4 +154,3 @@ function ResourcesList() {
     </>
   );
 }
-export default ResourcesList;

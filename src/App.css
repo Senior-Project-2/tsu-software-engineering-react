@@ -1,16 +1,23 @@
 .test-app-header a, .test-app-header .navbar-burger, .footer .navbar-item, .footer ul{
-  color: DodgerBlue;
+  color:black;
 }
 
 .test-app-header a:hover, .test-app-header .navbar-burger:hover, .footer .navbar-item:hover{
-  color: white;
-  background-color: DodgerBlue;
+  color: black;
+  //background-color: DodgerBlue;
   background-color: rgb(204, 241, 255);
 }
 
 .navbar-menu{
+  background-color: white;
+}
+.navbar-brand{
   background-color: hsl(0, 0%, 21%);
 }
+.navbar-item{
+  background-color: white;
+}
+
 .Login {
     display: flex;
     justify-content: center;
@@ -71,4 +78,16 @@
     border-radius: 6px;
     border-width: 1;
     margin-bottom: 20px;
+}
+
+.box1{
+  width: 50%;
+  height: 100px;
+  border-radius: 6px;
+  border-width: 0;
+  margin-bottom: 20px;
+  background-color: rgb(87, 154, 190);
+}
+.navbar-start{
+
 }
