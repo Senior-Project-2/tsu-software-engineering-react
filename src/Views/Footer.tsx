@@ -1,3 +1,4 @@
+/*
 import "../App.css";
 
 function Footer() {
@@ -13,4 +14,7 @@ function Footer() {
     );
 }
 
+
 export default Footer;
+
+*/
