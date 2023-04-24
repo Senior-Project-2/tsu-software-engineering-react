@@ -5,6 +5,7 @@ export const INIT_RESULT_RESOURCE_DATA: ResourceTableRow = {
         id: -1,
         Resources: " ",
         ResourcesName: " ",
+        ResourcesAddress: 1,
         ResourcesCurrentNum: 1,
-        ResourceRandom: 1
+        ResourceMaxNum: 1
     };

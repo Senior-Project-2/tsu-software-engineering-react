@@ -6,130 +6,136 @@
       "client_name": "Drills r US",
       "state": "TN",
       "num_of_inventories": 2,
-      "num_of_contacts": 4
+      "num_of_contacts": 4,
+      "color": "bgfillred"
     },
     {
         "id": 2,
         "client_name": "Kruger",
         "state": "KY",
         "num_of_inventories": 9001,
-        "num_of_contacts": 45
+        "num_of_contacts": 45,
+        "color": "red"
     },
     {
         "id": 7,
         "client_name": "Lowels",
         "state": "CA",
         "num_of_inventories": 60,
-        "num_of_contacts": 1
+        "num_of_contacts": 1,
+        "color": "red"
     },
     {
         "id": 9,
         "client_name": "Pooblix",
         "state": "AL",
         "num_of_inventories": 314159,
-        "num_of_contacts": 205
+        "num_of_contacts": 205,
+        "color": "red"
     },
     {
         "id": 4,
         "client_name": "Amazoom",
         "state": "CO",
         "num_of_inventories": 100,
-        "num_of_contacts": 25
+        "num_of_contacts": 25,
+        "color": "red"
     },
     {
         "id": 6,
         "client_name": "EB Gamers",
         "state": "UT",
         "num_of_inventories": 26,
-        "num_of_contacts": 4
+        "num_of_contacts": 4,
+        "color": "red"
     }
   ],
   "inventory": [
     {
       "id": 1,
-      "inventory_name": "Drills r US",
-      "inventory_address": "TN",
+      "inventory_name": "Inventory 34",
+      "inventory_address": "23e",
       "inventory_current_num": 2,
-      "inventory_max_num": 4
+      "inventory_max_num": 40
     },
     {
       "id": 2,
-      "inventory_name": "Kruger",
-      "inventory_address": "KY",
-      "inventory_current_num": 9001,
-      "inventory_max_num": 45
+      "inventory_name": "Inventory 56",
+      "inventory_address": "98r",
+      "inventory_current_num": 901,
+      "inventory_max_num": 4500
     },
     {
       "id": 7,
-      "inventory_name": "Lowels",
-      "inventory_address": "CA",
+      "inventory_name": "Inventory 75",
+      "inventory_address": "34g",
       "inventory_current_num": 60,
-      "inventory_max_num": 1
+      "inventory_max_num": 100
     },
     {
       "id": 9,
-      "inventory_name": "Pooblix",
-      "inventory_address": "AL",
-      "inventory_current_num": 314159,
-      "inventory_max_num": 205
+      "inventory_name": "Inventory 345",
+      "inventory_address": "43f",
+      "inventory_current_num": 3141,
+      "inventory_max_num": 205934
     },
     {
       "id": 4,
-      "inventory_name": "Amazoom",
-      "inventory_address": "CO",
+      "inventory_name": "Inventory 98",
+      "inventory_address": "12t",
       "inventory_current_num": 100,
-      "inventory_max_num": 25
+      "inventory_max_num": 250
     },
     {
       "id": 6,
-      "inventory_name": "EB Gamers",
-      "inventory_address": "UT",
+      "inventory_name": "Inventory 26",
+      "inventory_address": "23b",
       "inventory_current_num": 26,
-      "inventory_max_num": 4
+      "inventory_max_num": 30
     }
   ],
   "resources": [
     {
-      "id": 2,
-      "resources_pic": " Photo",
-      "resources_name": "Ronald ",
-      "resources_current_num": 3,
-      "resource_random": 4
+      "id": 1,
+      "resources_name": "Painters Tape ",
+      "resources_address": "12345",
+      "resources_current_num": 30,
+      "resources_max_num": 31
     },
     {
       "id": 2,
-      "resources_pic": " Photo",
-      "resources_name": "Ronald ",
-      "resources_current_num": 3,
-      "resource_random": 4
+      "resources_name": "Lawnmower ",
+      "resources_address": "12345",
+      "resources_current_num": 30,
+      "resources_max_num": 70
     },
     {
-      "id": 2,
-      "resources_pic": " Photo",
-      "resources_name": "Ronald ",
-      "resources_current_num": 3,
-      "resource_random": 4
+      "id": 7,
+      "resources_name": "Hardwood ",
+      "resources_address": "12345",
+      "resources_current_num": 399,
+      "resources_max_num": 400
     },
     {
-      "id": 2,
-      "resources_pic": " Photo",
-      "resources_name": "Ronald ",
-      "resources_current_num": 3,
-      "resource_random": 4
+      "id": 9,
+      "resources_name": "Paint ",
+      "resources_address": "12345",
+      "resources_current_num": 78,
+      "resources_max_num": 4345
     },
     {
-      "id": 2,
-      "resources_pic": " Photo",
-      "resources_name": "Ronald ",
+      "id": 4,
+      "resources_name": "Screwdriver ",
+      "resources_address": "12345",
       "resources_current_num": 3,
-      "resource_random": 4
+      "resources_max_num": 6
     },
     {
-      "id": 2,
-      "resources_pic": " Photo",
-      "resources_name": "Ronald ",
-      "resources_current_num": 3,
-      "resource_random": 4
+      "id": 6,
+      "resources_name": "Hammer ",
+      "resources_address": "12345",
+      "resources_current_num": 11,
+      "resources_max_num": 100
     }
   ]
 }

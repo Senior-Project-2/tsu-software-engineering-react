@@ -132,8 +132,8 @@ function Home() {
                       <td>{(row.state ? row.state : "")}</td>
                       <td>{(row.num_of_inventories ? row.num_of_inventories.toString() : "")}</td>
                       <td>{(row.num_of_contacts ? row.num_of_contacts.toString() : "")}</td>
-                      <td><button className="button is-dark" onClick={() => showModal(i)}>View Client Details</button></td>
-                      <td><button className="button is-dark" onClick={() => showModal(i)}>Edit Client Details</button></td>
+                       <td><button className="button is-dark" onClick={() => showModal(i)}>View Client Details</button></td>
+                       <td><button className="button is-dark" onClick={() => showModal(i)}>Edit Client Details</button></td>
                     </tr>
                   )}
                 </tbody>

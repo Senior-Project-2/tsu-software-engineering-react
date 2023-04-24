@@ -40,10 +40,10 @@ function Header() {
             </div>
             <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start panel-tabs">
-                    <a className="navbar-item" href="/">Home</a>
+                    <a className="navbar-item" href="/home">Home</a>
                     <a className="navbar-item" href="/inventorylist">Inventory List</a>
                     {/*}<button onClick={goToInventoryList} className="submitbutton">InventoryList</button>*/}
-                    <a className="navbar-item" href="/about">Resources List</a>
+                    <a className="navbar-item" href="/resourcelist">Resources List</a>
                     <a className="navbar-item" href="/about">Profile</a>
                 </div>
             </div>

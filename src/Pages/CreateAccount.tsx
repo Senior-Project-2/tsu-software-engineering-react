@@ -1,9 +1,11 @@
 import React from "react";
 import "../App.css";
 import {useNavigate} from "react-router-dom";
+import Login from "../Pages/Login"
 function CreateAccount() {
 const navigate = useNavigate();
 const goToLogin = () => navigate("/login");
+const goToHome = () => navigate("/home");
   return (
     <div className="Login">
       <div className="LoginBox">
@@ -19,10 +21,9 @@ const goToLogin = () => navigate("/login");
         </div>
           <div style={{display:"flex", justifyContent:"center"}}>
             {/*<button className="submitbutton">Sign-Up</button>*/}
-            <button onClick={goToLogin} className="submitbutton">Sign-Up</button>
+            <button onClick={goToHome} className="submitbutton">Sign-Up</button>
           </div>
-          <div className="BacktoLogin">Already have an account? Sign-In.</div>
-          <a href="/foobar">Already have an account? Sign-In.</a>
+          <button onClick={goToLogin} className="movetologin">Already have an account? Sign-In.</button>
          </div>
         );
         }

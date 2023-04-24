@@ -5,7 +5,7 @@ export interface ClientTableRow {
         ClientName: String,
         AddressState: String,
         InventoryCount: Number,
-        ContactCount: Number
+        ContactCount: Number,
     }
 
 
@@ -14,7 +14,7 @@ export interface ClientTableRow {
         client_name: String,
         state: String,
         num_of_inventories: Number,
-        num_of_contacts: Number
+        num_of_contacts: Number,
     }
 
 

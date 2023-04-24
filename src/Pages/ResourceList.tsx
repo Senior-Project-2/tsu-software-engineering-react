@@ -4,6 +4,9 @@ import "../App.css";
 import {ResourceTableRow, ResourceTableJsonObject, getResourceTable} from "../DataObjects/ResourceTableInterface";
 import { INIT_RESULT_RESOURCE_DATA } from "../DataConstants/ResourceTableConstants";
 
+import dummyData from "../DataConstants/clientDb.json";
+const data: any = dummyData;
+
 export default function Main() {
 
   const [tableData, setTableData] = useState<ResourceTableRow[]>([INIT_RESULT_RESOURCE_DATA]);
@@ -22,10 +25,12 @@ export default function Main() {
           response.data.forEach((element: ResourceTableJsonObject) => {
             resourceTableArray.push({
               id: (element.id ? element.id : null),
-              Resources: (element.resources_pic ? element.resources_pic : ""),
+              Resources: (element.resources ? element.resources : ""),
               ResourcesName: (element.resources_name ? element.resources_name : ""),
+              ResourcesAddress: (element.resources_address ? element.resources_address : null),
+
               ResourcesCurrentNum: (element.resources_current_num ? element.resources_current_num : null),
-              ResourceRandom: (element.resource_random ? element.resource_random : null)
+              ResourceMaxNum: (element.resource_max_num ? element.resource_max_num : null)
             });
           });
 
@@ -44,8 +49,8 @@ export default function Main() {
     setIsModalActive(!isModalActive);
   }
 
-  function showModal(key: number){
-    let resourceRow: ResourceTableRow = tableData.at(key);
+  function showModal(i: number){
+    let resourceRow: ResourceTableRow = data.resources.at(i);
     setmodalResourceData(resourceRow);
     toggleModal();
   }
@@ -88,10 +93,10 @@ export default function Main() {
                   <p className="mb-3">{(modalResourceData.ResourcesCurrentNum ? modalResourceData.ResourcesCurrentNum.toString() : "")}</p>
                 </>
               }
-              { modalResourceData.ResourceRandom &&
+              { modalResourceData.ResourceMaxNum &&
                 <>
                   <label className="has-text-weight-medium">Number of Contacts: </label>
-                  <p>{(modalResourceData.ResourceRandom ? modalResourceData.ResourceRandom.toString() : "")}</p>
+                  <p>{(modalResourceData.ResourceMaxNum ? modalResourceData.ResourceMaxNum.toString() : "")}</p>
                 </>
               }
             </div>
@@ -110,34 +115,64 @@ export default function Main() {
   return (
     <>
       <h2 className="is-size-2 pb-6 has-text-weight-medium"> Resource List</h2>
-      <div className="container is-fluid mt-5">
-              <progress className="progress is-link"
-                        value="60" max="100">60%</progress>
-
-          </div>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
                 <thead>
                   <tr>
                     <th>#</th>
+                    <th>Resource Status</th>
                     <th>Resource Name</th>
                     <th>Resource Address</th>
                     <th>Current Number of Resource</th>
-                    <th>Max Number of Inventories</th>
-                    <th></th>
+                    <th>Max Number of Resources</th>
+                    <th><div className="container is-fluid mt-5">
+{/*                     <progress className="progress is-link" value="20" max="100">60%</progress> */}
+          </div></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {tableData.map((row:any, i:number) =>
+{/*                   {tableData.map((row:any, i:number) => */}
+                  {data.resources.map((row:any, i:number) =>
                     <tr id={(row.id ? row.id.toString() : "")}>
                       <td>{(row.id ? row.id.toString() : "")}</td>
-                      <td>{(row.resources_pic ? row.resources_pic : "")}</td>
+                      {
+                         (() => {
+                                  let myval =(row.resources_current_num / row.resources_max_num) * 100
+                                  console.log(myval)
+                                if (myval <= 10) {
+                                  return (
+                                     <td><progress className="progress is-danger" value={(row.resources_current_num/row.resources_max_num)*100} max="100" color="red"></progress></td>
+                                  )
+                                }
+                                else if (myval>10 && myval<39){
+                                return (
+//                                     <td className= "bgfill">{<FontAwesomeIcon icon={faFaceSurprise} className= "c"/>}</td>
+                                    <td><progress className="progress is-link" value={(row.resources_current_num/row.resources_max_num)*100} max="100" color="red"></progress></td>
+                                )
+                            }
+                            else if (myval>39 && myval<69){
+                            return (
+//                                 <td className= "bgfill">{<FontAwesomeIcon icon={faFaceSurprise} className= "c"/>}</td>
+                                <td><progress className="progress is-warning" value={(row.resources_current_num/row.resources_max_num)*100} max="100" color="red"></progress></td>
+                            )
+                            }
+                            else if (myval>69 && myval<100){
+                                return (
+//                                     <td className= "bgfill">{<FontAwesomeIcon icon={faFaceSurprise} className= "c"/>}</td>
+                                    <td><progress className="progress is-success is-dark" value={(row.resources_current_num/row.resources_max_num)*100} max="100" color="red"></progress></td>
+                                )
+                            }
+                              })()
+                        }
+{/*                       <td><progress className="progress is-info" value={(row.resources_current_num/row.resources_max_num)*100} max="100"></progress></td> */}
+{/*                       <td><progress className="progress is-info" value={(row.resources_current_num/row.resources_max_num)*100} max="100" color="green"></progress></td> */}
                       <td>{(row.resources_name ? row.resources_name : "")}</td>
+                      <td>{(row.resources_address ? row.resources_address : "")}</td>
                       <td>{(row.resources_current_num ? row.resources_current_num.toString() : "")}</td>
-                      <td>{(row.inventory_max_num ? row.inventory_max_num.toString() : "")}</td>
-                      <td><button className="button is-dark" onClick={() => showModal(i)}>View Client Details</button></td>
-                      <td><button className="button is-dark" onClick={() => showModal(i)}>Edit Client Details</button></td>
+                      <td>{(row.resources_max_num ? row.resources_max_num.toString() : "")}</td>
+
+                       <td><button className="button is-small " onClick={() => showModal(i)}>View Client Details</button></td>
                     </tr>
                   )}
                 </tbody>
