@@ -1,10 +1,13 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "../App.css";
 import "./ClientHomepage.css";
 import {InventoryTableRow, InventoryTableJsonObject, getInventoryTable} from "../DataObjects/InventoryTableInterface";
 import { INIT_INVENTORY_RESULT_DATA } from "../DataConstants/InventoryTableConstants";
 import 'bulma/css/bulma.min.css';
+import ResourceList from "../Pages/ResourceList"
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -18,6 +21,9 @@ export default function Main() {
   const [tableData, setTableData] = useState<InventoryTableRow[]>([INIT_INVENTORY_RESULT_DATA]);
   const [modalInventoryData, setmodalInventoryData] = useState<InventoryTableRow>(INIT_INVENTORY_RESULT_DATA);
   const [isModalActive, setIsModalActive] = useState<Boolean>(false);
+
+  const navigate = useNavigate();
+  const goToInventoryList = () => navigate("/resourcelist");
 
 
   //A function that supports the creation of the inventory table.
@@ -119,7 +125,7 @@ export default function Main() {
 
   return (
     <>
-      <h2 className="is-size-3 pb-5 has-text-weight-medium"> Client Homepage</h2>
+      <h1 className="is-size-3 pb-5 bg-black">Amazon Homepage</h1>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
@@ -130,8 +136,8 @@ export default function Main() {
                     <th>#</th>
                     <th>Inventory Name</th>
                     <th>Inventory Address</th>
-                    <th>Current #</th>
-                    <th>Max #</th>
+                    <th>Current Resources #</th>
+                    <th>Max Resources #</th>
                     <th>Inventory Status</th>
                   </tr>
                 </thead>
@@ -173,7 +179,7 @@ export default function Main() {
                             }
                             })()
                        }
-                      <td className= "red"><button className="button is-dark" onClick={() => showModal(i)}>View Client Details</button></td>
+                      <td className= "red"><button className="button is-dark is-info" onClick={goToInventoryList/*() => showModal(i)*/}>View Resource List</button></td>
 {/*}                       <td className= "bgfill"><button className="button is-dark" onClick={() => showModal(i)}>Edit Client Details</button></td>*/}
                     </tr>
                   )}

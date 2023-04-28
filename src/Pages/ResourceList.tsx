@@ -49,8 +49,8 @@ export default function Main() {
     setIsModalActive(!isModalActive);
   }
 
-  function showModal(i: number){
-    let resourceRow: ResourceTableRow = data.resources.at(i);
+  function showModal(key: number){
+    let resourceRow: ResourceTableRow = tableData.at(key);
     setmodalResourceData(resourceRow);
     toggleModal();
   }
@@ -71,11 +71,11 @@ export default function Main() {
           </div>
           <section className="modal-card-body columns">
             <div className="column">
-              <label className="has-text-weight-medium">Number: </label>
+              <label className="has-text-weight-medium">Resource ID #: 2</label>
               <p className="mb-3">{(modalResourceData.id ? modalResourceData.id.toString() : "")}</p>
               { modalResourceData.Resources &&
                 <>
-                  <label className="has-text-weight-medium">Resource Name: </label>
+                  <label className="has-text-weight-medium">Resource Name: 14z</label>
                   <p>{(modalResourceData.Resources ? modalResourceData.Resources: "")}</p>
                 </>
               }
@@ -83,19 +83,19 @@ export default function Main() {
             <div className="column">
               { modalResourceData.ResourcesName &&
                 <>
-                  <label className="has-text-weight-medium">State: </label>
+                  <label className="has-text-weight-medium">Current Number of Resources: 30</label>
                   <p className="mb-3">{(modalResourceData.ResourcesName ? modalResourceData.ResourcesName : "")}</p>
                 </>
               }
               { modalResourceData.ResourcesCurrentNum &&
                 <>
-                  <label className="has-text-weight-medium">Number of Resources: </label>
+                  <label className="has-text-weight-medium">Max Number of Resources: 31</label>
                   <p className="mb-3">{(modalResourceData.ResourcesCurrentNum ? modalResourceData.ResourcesCurrentNum.toString() : "")}</p>
                 </>
               }
               { modalResourceData.ResourceMaxNum &&
                 <>
-                  <label className="has-text-weight-medium">Number of Contacts: </label>
+                  <label className="has-text-weight-medium">Max Number of Resources: </label>
                   <p>{(modalResourceData.ResourceMaxNum ? modalResourceData.ResourceMaxNum.toString() : "")}</p>
                 </>
               }
@@ -114,7 +114,7 @@ export default function Main() {
 
   return (
     <>
-      <h2 className="is-size-2 pb-6 has-text-weight-medium"> Resource List</h2>
+      <h2 className="is-size-2 pb-6 has-text-weight-medium bg-black"> Resource List</h2>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
@@ -124,7 +124,7 @@ export default function Main() {
                     <th>Resource Status</th>
                     <th>Resource Name</th>
                     <th>Resource Address</th>
-                    <th>Current Number of Resource</th>
+                    <th>Current Number of Resources</th>
                     <th>Max Number of Resources</th>
                     <th><div className="container is-fluid mt-5">
 {/*                     <progress className="progress is-link" value="20" max="100">60%</progress> */}
@@ -157,7 +157,7 @@ export default function Main() {
                                 <td><progress className="progress is-warning" value={(row.resources_current_num/row.resources_max_num)*100} max="100" color="red"></progress></td>
                             )
                             }
-                            else if (myval>69 && myval<100){
+                            else if (myval>69 && myval<=100){
                                 return (
 //                                     <td className= "bgfill">{<FontAwesomeIcon icon={faFaceSurprise} className= "c"/>}</td>
                                     <td><progress className="progress is-success is-dark" value={(row.resources_current_num/row.resources_max_num)*100} max="100" color="red"></progress></td>
@@ -171,8 +171,7 @@ export default function Main() {
                       <td>{(row.resources_address ? row.resources_address : "")}</td>
                       <td>{(row.resources_current_num ? row.resources_current_num.toString() : "")}</td>
                       <td>{(row.resources_max_num ? row.resources_max_num.toString() : "")}</td>
-
-                       <td><button className="button is-small " onClick={() => showModal(i)}>View Client Details</button></td>
+                       <td><button className="button is-small is-info" onClick={() => showModal(i)}>View Resource Details</button></td>
                     </tr>
                   )}
                 </tbody>

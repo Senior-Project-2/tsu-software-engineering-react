@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import Login from "../Pages/Login"
 function CreateAccount() {
 const navigate = useNavigate();
-const goToLogin = () => navigate("/login");
+const goToLogin = () => navigate("/login2");
 const goToHome = () => navigate("/home");
   return (
     <div className="Login">
@@ -23,7 +23,7 @@ const goToHome = () => navigate("/home");
             {/*<button className="submitbutton">Sign-Up</button>*/}
             <button onClick={goToHome} className="submitbutton">Sign-Up</button>
           </div>
-          <button onClick={goToLogin} className="movetologin">Already have an account? Sign-In.</button>
+          <button onClick={goToLogin}>Already have an account? Sign-In.</button>
          </div>
         );
         }

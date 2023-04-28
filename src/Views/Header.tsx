@@ -40,11 +40,14 @@ function Header() {
             </div>
             <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start panel-tabs">
+                    <h1 className="navbar-item bluecolor" aria-current="page" text-align='center'>ABC Industrial Management System</h1>
                     <a className="navbar-item" href="/home">Home</a>
                     <a className="navbar-item" href="/inventorylist">Inventory List</a>
                     {/*}<button onClick={goToInventoryList} className="submitbutton">InventoryList</button>*/}
                     <a className="navbar-item" href="/resourcelist">Resources List</a>
-                    <a className="navbar-item" href="/about">Profile</a>
+                    {/*<h2 className=" ">--------------------------------------------------</h2>*/}
+                    {/*<h1 className="navbar-item bg-blue" aria-current="page" text-align='center'>ABC Industrial Management System</h1>*/}
+                    {/*<h2 className=" ">--------------------------------------------------</h2>*/}
                 </div>
             </div>
         </nav>
