@@ -2,6 +2,7 @@
  import About from "./Views/About";
  import Home from "./Views/Home";
  import Login from "./Pages/Login";
+  import Login2 from "./Pages/Login";
  import CreateAccount from "./Pages/CreateAccount"
  import InventoryList from "./Pages/ClientHomepage"
  import ResourceList from "./Pages/ResourceList"
@@ -23,9 +24,11 @@ function App() {
                      <Route path="about" element={<About/>}></Route>
                      <Route path="inventorylist" element={<InventoryList/>}></Route>
                      <Route path="resourcelist" element={<ResourceList/>}></Route>
+                     <Route path="login2" element={<Login2/>}></Route>
                  </Route>
              </Routes>
           </Router>
+
          );
     }
 export default App;

@@ -5,7 +5,8 @@ export interface InventoryTableRow {
         InventoryName: String,
         InventoryAddress: String,
         InventoryCount: Number,
-        InventoryMaxCount: Number
+        InventoryMaxCount: Number,
+        //InventoryColor: String
     }
 
 

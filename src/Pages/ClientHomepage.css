@@ -1,4 +1,4 @@
-.columns{
+{/*.columns{
     width: 100px;
     height: 40px;
     margin: auto;
@@ -12,5 +12,32 @@
     right: 225px;
     top:175px;
     background-color: rgb(87, 154, 190);
+}*/}
+.a{
+    color: red;
+}
+.b{
+    color: yellow;
+}
+.c{
+    color: blue;
+}
+.d{
+    color: green;
+}
+.bgfill{
+    "red": background-color: red;
+}
+.bgfillorange{
+    background-color: orange;
+}
+.bgfillyellow{
+    background-color: yellow;
+}
+.bgfillgreen{
+    background-color: green;
+}
+.td{
+    justify-content: center;
 }
 

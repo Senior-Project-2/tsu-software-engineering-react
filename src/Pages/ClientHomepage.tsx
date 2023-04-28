@@ -1,14 +1,29 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import "../App.css";
+import "./ClientHomepage.css";
 import {InventoryTableRow, InventoryTableJsonObject, getInventoryTable} from "../DataObjects/InventoryTableInterface";
 import { INIT_INVENTORY_RESULT_DATA } from "../DataConstants/InventoryTableConstants";
+import 'bulma/css/bulma.min.css';
+import ResourceList from "../Pages/ResourceList"
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import {faFaceSmile, faFaceMeh, faFaceFrown, faFaceSurprise} from '@fortawesome/free-solid-svg-icons'
+import dummyData from "../DataConstants/clientDb.json";
+const data: any = dummyData;
+
 
 export default function Main() {
 
   const [tableData, setTableData] = useState<InventoryTableRow[]>([INIT_INVENTORY_RESULT_DATA]);
   const [modalInventoryData, setmodalInventoryData] = useState<InventoryTableRow>(INIT_INVENTORY_RESULT_DATA);
   const [isModalActive, setIsModalActive] = useState<Boolean>(false);
+
+  const navigate = useNavigate();
+  const goToInventoryList = () => navigate("/resourcelist");
 
 
   //A function that supports the creation of the inventory table.
@@ -25,7 +40,7 @@ export default function Main() {
               InventoryName: (element.inventory_name ? element.inventory_name : ""),
               InventoryAddress: (element.inventory_address ? element.inventory_address : ""),
               InventoryCount: (element.inventory_current_num ? element.inventory_current_num : null),
-              InventoryMaxCount: (element.inventory_max_num ? element.inventory_max_num : null)
+              InventoryMaxCount: (element.inventory_max_num ? element.inventory_max_num : null),
             });
           });
 
@@ -102,6 +117,7 @@ export default function Main() {
   }
 
 
+
   //The useEffect is a function that runs whenever the set data changes or when loading the page.
   useEffect(() => {
     setInventoryTable();
@@ -109,42 +125,62 @@ export default function Main() {
 
   return (
     <>
-      <h2 className="is-size-3 pb-5 has-text-weight-medium"> Inventory List</h2>
-       <div className="box1 is-danger is-pulled-left">
-                  <div className= "box1 is-8">
-
-                      <img
-                       src={require("./Contact.png")}
-                       alt="Logo"
-                       width="auto"
-                       height="auto"
-                      />
-              </div>
-
-                </div>
+      <h1 className="is-size-3 pb-5 bg-black">Amazon Homepage</h1>
       <div className="box columns is-centered is-radiusless">
         <div className="column is-12 px-0 py-0">
             <table className="table is-striped is-fullwidth">
                 <thead>
                   <tr>
+{/*                     <th><FontAwesomeIcon icon={faCoffee}/></th> */}
+{/*                     <th><FontAwesomeIcon icon={faFaceSmile} color="orange"/></th> */}
                     <th>#</th>
                     <th>Inventory Name</th>
                     <th>Inventory Address</th>
-                    <th>Current Number of Inventories</th>
-                    <th>Max Number of Inventories</th>
-                    <th></th>
+                    <th>Current Resources #</th>
+                    <th>Max Resources #</th>
+                    <th>Inventory Status</th>
                   </tr>
                 </thead>
+
                 <tbody>
-                  {tableData.map((row:any, i:number) =>
+{/*                   {tableData.map((row:any, i:number) => */}
+{/*                   Icon icon1 = <FontAwesomeIcon icon={faFaceSmile} className= "a"/> */}
+{/*                   Icon icon2 = faFaceSmile; */}
+                  {data.inventory.map((row:any, i:number) =>
                     <tr id={(row.id ? row.id.toString() : "")}>
                       <td>{(row.id ? row.id.toString() : "")}</td>
-                      <td>{(row.inventory_name ? row.inventory_name : "")}</td>
-                      <td>{(row.inventory_address ? row.inventory_address : "")}</td>
-                      <td>{(row.inventory_current_num ? row.inventory_current_num.toString() : "")}</td>
-                      <td>{(row.inventory_max_num ? row.inventory_max_num.toString() : "")}</td>
-                      <td><button className="button is-dark" onClick={() => showModal(i)}>View Client Details</button></td>
-                      <td><button className="button is-dark" onClick={() => showModal(i)}>Edit Client Details</button></td>
+                      <td className= "red">{(row.inventory_name ? row.inventory_name : "")}</td>
+                      <td className= "bgfillred">{(row.inventory_address ? row.inventory_address : "")}</td>
+                      <td className= "bgfill">{(row.inventory_current_num ? row.inventory_current_num.toString() : "")}</td>
+                      <td className= "bgfill">{(row.inventory_max_num ? row.inventory_max_num.toString() : "")}</td>
+                       {
+                       (() => {
+                                let myval =(row.inventory_current_num / row.inventory_max_num) * 100
+                                console.log(myval)
+                              if (myval <= 10) {
+                                return (
+                                   <td className= "a">{<FontAwesomeIcon icon={faFaceFrown} />}</td>
+                                )
+                              }
+                              else if (myval>10 && myval<39){
+                                return (
+                                    <td>{<FontAwesomeIcon icon={faFaceMeh} className= "b"/>}</td>
+                                )
+                              }
+                            else if (myval>39 && myval<69){
+                                return (
+                                    <td>{<FontAwesomeIcon icon={faFaceSurprise} className= "c"/>}</td>
+                                )
+                            }
+                            else if(myval>69 && myval<100){
+                                return (
+                                    <td>{<FontAwesomeIcon icon={faFaceSmile} className= "d"/>}</td>
+                                )
+                            }
+                            })()
+                       }
+                      <td className= "red"><button className="button is-dark is-info" onClick={goToInventoryList/*() => showModal(i)*/}>View Resource List</button></td>
+{/*}                       <td className= "bgfill"><button className="button is-dark" onClick={() => showModal(i)}>Edit Client Details</button></td>*/}
                     </tr>
                   )}
                 </tbody>

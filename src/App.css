@@ -13,9 +13,55 @@
 }
 .navbar-brand{
   background-color: hsl(0, 0%, 21%);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 .navbar-item{
   background-color: white;
+}
+.navbar.navbar-inverse.navbar-header.navbar-brand {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+.h1{
+background-color: hsl(0, 0%, 21%);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-header {
+  text-align: center;
+}
+
+.bg-red {
+  background-color: red;
+}
+.bg-black {
+  color: black;
+}
+.bg-blue {
+  background-color:DodgerBlue;
+}
+.bg-yellow{
+  background-color:yellow;
+}
+.bg-orange {
+  background-color:orange;
+}
+.bg-yellow {
+  background-color:yellow;
+}
+.bg-green {
+  background-color:ForestGreen;
+}
+.bluecolor{
+    color: blue;
+    font-size: 20px;
+    pointer: cursor;
+    font-weight: bold;
 }
 
 .Login {

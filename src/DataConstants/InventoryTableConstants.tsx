@@ -6,5 +6,5 @@ export const INIT_INVENTORY_RESULT_DATA: InventoryTableRow = {
         InventoryName: " ",
         InventoryAddress: " ",
         InventoryCount: 1,
-        InventoryMaxCount: 0
+        InventoryMaxCount: 1
     };
